@@ -42,8 +42,12 @@ const createSquares = () => {
                     7 - (idx % 8),
                     Math.min(7 - (idx % 8),(56 + (idx % 8) - idx) / 8),
                     (56 + (idx % 8) - idx /8,
-                    Math.min(idx % 8,(56 + (idx % 8)- idx) / 8),    
-                            ]
+                    Math.min(idx % 8,(56 + (idx % 8)- idx) / 8),
+                    idx % 8,
+                    Math.min(idx % 8,(idx - (idx%8))/8),
+                    (idx -(idx % 8))/8,
+                    Math.min(7 - (idx % 8), (idx - idx%8))/8), 
+                    ];
             }
         })
     }
