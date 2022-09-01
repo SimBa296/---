@@ -2,10 +2,16 @@
 const stage = document.getElementById("stage");
 const squareTemplate = document.getElementById("square-template");
 //追加
-const stoneStareList = [];
+const stoneStateList = [];
+const onClickSquare = (index) => {
+    if(stoneStateList[index] !==0){
+        alert("ここには置けないよ")
+        return;
+    }
+}
 
 const createSquares = () => {
-    for (let i = 0; i < 64; i++){
+    for (let i = 0; i < 64; i++) {
         const square = squareTemplate.cloneNode(true);//クローン
         square.removeAttribute("id"); // idの属性
         stage.appendChild(square);// マス目 html要素を盤に追加
@@ -27,6 +33,9 @@ const createSquares = () => {
         //追加
         stone.setAttribute("data-index" , i);//インデックス番号をHTML要素に保持
         stoneStareList.push(defaultState);
+        square.addEventListener('click', () => {
+            onClickSquare(i);
+        })
     }
 };
 window.onload = () => {
