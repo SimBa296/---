@@ -14,3 +14,29 @@ html,body {
     width:404px;
     height:404px;
 }
+.square {
+    position: relative;
+    width:50px;
+    height:50px;
+    border: solid black;
+    border-width:0 4px 4px 0;
+    cursor:pointer;;
+}
+.square::first-child {
+    border-width:4px;
+    width:54px;
+    height:54px;
+}
+.stone {
+    position: absolute;
+    top:2px;
+    bottom:0;
+    left:2px;
+    width: 42px;
+    height: 42px;
+    border-radius: 21px;
+    background-color: black;
+}
+#square-template {
+    display:none;
+}
