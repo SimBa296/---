@@ -31,7 +31,7 @@ html, body {
     width:54px;
 }
 
-.square::first-child {
+.square:first-child {
     border-width:4px;
     width:54px;
     height:54px;
