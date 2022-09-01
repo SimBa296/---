@@ -1,6 +1,6 @@
 // テンプレート
-const stage = document.getElementById('stage');
-const squareTemplate = document.getElementsById('squareTemplate');
+const stage = document.getElementById("stage");
+const squareTemplate = document.getElementById("square-template");
 
 
 const createSquares = () => {
@@ -11,18 +11,18 @@ const createSquares = () => {
 
         const stone = square.querySelector('.stone');
 
-        var defaultstate;
+        var defaultState;
         //デフォルトの石の状態を分岐
-
         if(i == 27 || i == 36) {
-            defaultstate = 1;
+            defaultState = 1;
         }
         else if(i == 28 || i == 35){
-            defaultstate = 2;
+            defaultState = 2;
         }
         else {
-            defaultstate = 0;
+            defaultState = 0;
         }
+        stone.setAttribute("data-state",defaultState);
     }
 };
 // window.onload = () => {
