@@ -1,5 +1,6 @@
 // テンプレート
 const stage = document.getElementById("stage");
+const currentTurnText = document.getElementById("currentTurn");
 const squareTemplate = document.getElementById("square-template");
 //追加
 const stoneStateList = [];
@@ -29,18 +30,19 @@ const createSquares = () => {
         else {
             defaultState = 0;
         }
-        stone.setAttribute("data-state",defaultState);
+        stone.setAttribute("data-state", defaultState);
         //追加
-        stone.setAttribute("data-index" , i);//インデックス番号をHTML要素に保持
+        stone.setAttribute("data-index", i);//インデックス番号をHTML要素に保持
         stoneStateList.push(defaultState);
         square.addEventListener('click', () => {
             onClickSquare(i);
+
             var currentColor = 1;
             const getReversibleStones = (idx) => {
 
                 const squareNums = [
                     7 - (idx % 8),
-                    Math.min(7 - (idx % 8),(56 + (idx % 8) - idx) / 8),
+                    Math.min(7 - (idx % 8), (56 + (idx % 8) - idx) / 8),
                     (56 + (idx % 8) - idx /8,
                     Math.min(idx % 8,(56 + (idx % 8)- idx) / 8),
                     idx % 8,
@@ -48,10 +50,11 @@ const createSquares = () => {
                     (idx -(idx % 8))/8,
                     Math.min(7 - (idx % 8), (idx - idx%8))/8), 
                     ];
-                    // for文ループの規則を定めるためのパラメータ定義
-                    //ひっくり貸せることが確定した石の情報を入れる配列
+                    //for文ループの規則を定めるためのパラメータ定義
                     const parmeters = [1, 9, 8, 7, -1,-9, -8,-7];
 
+                    // for文ループの規則を定めるためのパラメータ定義
+                    //ひっくり貸せることが確定した石の情報を入れる配列
                     var results = [];
 
                     //8方向への走査のためのfor文
@@ -63,6 +66,7 @@ const createSquares = () => {
                         const param = parmeters[i];
                         //ひとつ隣の石の状態
                         const nextStoneState = stoneStateList[idx + param];
+
                         //フロー図の[2][3]:隣に石があるか 及び 隣の石が相手の色か -> どちらでもない場合は次のループへ
                         if(nextStoneState === 0 || nextStoneState === currentColor) continue;
                         //隣の石の番号を仮ボックスに格納
@@ -71,7 +75,7 @@ const createSquares = () => {
                         //フロー図[4][5]のループを実装
                         for (var j = 0; j < squareNum -1; j++){
                             const targetIdx = idx + param * 2 + param * j;
-                            const targetColor = stoneSttateList[targetIdx];
+                            const targetColor = stoneStateList[targetIdx];
                             //フロー図の[4]:さらに隣に隣に石があるか -> なければ次のループへ
                             if (targetColor === 0) continue;
                             //フロー図の[5]:さらに隣にある石が相手の色か
@@ -89,6 +93,23 @@ const createSquares = () => {
                     //ひっくり返せると確定した石の番号を戻り値にする
                     return results;
             };
+            const onClickSquare = (index) => {
+                 const reversibleStones = getReversibleStones(index);
+
+                 if (stoneStateList[index] !== 0 || !reversibleStones.length){
+                    alert("ここには置けないよ！");
+                    return;
+                 }
+                 stoneStateList[index] = currentColor;
+                 document
+                 .querySelector(`[data-index='${index}']`)
+                 .setAttribute("data-state",currentColor);
+
+                 reversibleStones.forEach((key)) => {
+                    stoneStateList[key] = currentColor;
+                    document.querySelector(`[data-index='${key}']`).setAttribute("data-state",currentColor);
+                  });
+            }
         })
     }
 };
