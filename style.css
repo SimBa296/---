@@ -35,7 +35,15 @@ html,body {
     width: 42px;
     height: 42px;
     border-radius: 21px;
+}
+.stone[data-state="0"]{
+    display:none;
+}
+.stone[data-state="1"]{
     background-color: black;
+}
+.stone[data-state="2"]{
+    background-color: white;
 }
 #square-template {
     display:none;
