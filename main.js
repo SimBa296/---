@@ -48,7 +48,38 @@ const createSquares = () => {
                     (idx -(idx % 8))/8,
                     Math.min(7 - (idx % 8), (idx - idx%8))/8), 
                     ];
-            }
+                    const parmeters = [1, 9, 8, 7, -1,-9, -8,-7];
+
+                    var results = [];
+
+                    for (var i = 0; i < 8; i++) {
+                        const box = [];
+
+                        const squareNum = squareNums[i];
+                        const param = parmeters[i];
+
+                        const nextStoneState = stoneStateList[idx + param];
+
+                        if(nextStoneState === 0 || nextStoneState === currentColor) continue;
+
+                        box.push(idx + param);
+
+                        for (var j = 0; j < squareNum -1; j++){
+                            const targetIdx = idx + param * 2 + param * j;
+                            const targetColor = stoneSttateList[targetIdx];
+
+                            if (targetColor === 0) continue;
+                            if (targetColor === currentColor) {
+                                results = results.concat(box);
+                                break;
+                            }
+                            else {
+                                box.push(targetIdx);
+                            }
+                        }
+                    }
+                    return results;
+            };
         })
     }
 };
