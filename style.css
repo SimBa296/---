@@ -1,0 +1,16 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html,body {
+    margin: 0;
+    background-color: #006400;
+}
+
+.stage {
+    display: flex;
+    flex-wrap: wrap;
+    margin:60px;
+    width:404px;
+    height:404px;
+}
