@@ -48,36 +48,45 @@ const createSquares = () => {
                     (idx -(idx % 8))/8,
                     Math.min(7 - (idx % 8), (idx - idx%8))/8), 
                     ];
+                    // for文ループの規則を定めるためのパラメータ定義
+                    //ひっくり貸せることが確定した石の情報を入れる配列
                     const parmeters = [1, 9, 8, 7, -1,-9, -8,-7];
 
                     var results = [];
 
+                    //8方向への走査のためのfor文
                     for (var i = 0; i < 8; i++) {
+                        //ひっくり返せる可能性のある石の情報を入れる配列
                         const box = [];
-
+                        //現在調べている方向にいくつマスがあるか
                         const squareNum = squareNums[i];
                         const param = parmeters[i];
-
+                        //ひとつ隣の石の状態
                         const nextStoneState = stoneStateList[idx + param];
-
+                        //フロー図の[2][3]:隣に石があるか 及び 隣の石が相手の色か -> どちらでもない場合は次のループへ
                         if(nextStoneState === 0 || nextStoneState === currentColor) continue;
-
+                        //隣の石の番号を仮ボックスに格納
                         box.push(idx + param);
 
+                        //フロー図[4][5]のループを実装
                         for (var j = 0; j < squareNum -1; j++){
                             const targetIdx = idx + param * 2 + param * j;
                             const targetColor = stoneSttateList[targetIdx];
-
+                            //フロー図の[4]:さらに隣に隣に石があるか -> なければ次のループへ
                             if (targetColor === 0) continue;
+                            //フロー図の[5]:さらに隣にある石が相手の色か
                             if (targetColor === currentColor) {
+                                //自分の色なら仮ボックスの石がひっくり返せることが確定
                                 results = results.concat(box);
                                 break;
                             }
                             else {
+                                //相手の色なら仮ボックスにその石の番号を格納
                                 box.push(targetIdx);
                             }
                         }
                     }
+                    //ひっくり返せると確定した石の番号を戻り値にする
                     return results;
             };
         })
