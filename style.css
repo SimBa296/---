@@ -4,7 +4,7 @@
 
 html, body {
     margin: 0;
-    background-color: #006400;
+    background-color: #7cfc00;
 }
 
 .stage {
@@ -56,4 +56,7 @@ html, body {
 }
 #square-template {
     display:none;
+}
+#current-turn {
+    font-size:25px
 }

@@ -1,6 +1,5 @@
 // テンプレート
 const stage = document.getElementById("stage");
-const currentTurnText = document.getElementById("currentTurn");
 const squareTemplate = document.getElementById("square-template");
 //追加
 const stoneStateList = [];
@@ -37,6 +36,7 @@ const createSquares = () => {
         square.addEventListener('click', () => {
             onClickSquare(i);
 
+            const currentTurnText = document.getElementById("currentTurn");
             var currentColor = 1;
             const getReversibleStones = (idx) => {
 
@@ -100,15 +100,25 @@ const createSquares = () => {
                     alert("ここには置けないよ！");
                     return;
                  }
+
+                 //自分の石
                  stoneStateList[index] = currentColor;
                  document
                  .querySelector(`[data-index='${index}']`)
                  .setAttribute("data-state",currentColor);
 
-                 reversibleStones.forEach((key)) => {
+                 //相手の石をひっくり返す
+                 reversibleStones.forEach((key) => {
                     stoneStateList[key] = currentColor;
                     document.querySelector(`[data-index='${key}']`).setAttribute("data-state",currentColor);
                   });
+
+                  //もし盤面がいっぱいだったら、ゲームが終了
+                  if (stoneStateList.every((state) => state !== 0)) {
+                    const blackStonesNum = stoneStateList.filter(state => state === 1).length
+
+                  }
+
             }
         })
     }
