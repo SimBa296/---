@@ -71,7 +71,11 @@ html, body {
 }
 #pass {
     font-size:150%;
-    text-align: center;
+    /* text-align: center; */
     padding: 5px 10px;
-    float: left;
+    /* float: left; */
+    border-color: blue;
+    position: relative;
+    left:230px;
+    
 }
