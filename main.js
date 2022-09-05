@@ -23,11 +23,11 @@ const getReversibleStones = (idx) => {
 
     const squareNums = [
         7 - (idx % 8),
-        Math.min(7 - (idx % 8), (56 + (idx % 8) - idx) / 8),
-        (56 + (idx % 8) - idx /8,
+        Math.min (7 - (idx % 8), (56 + (idx % 8) - idx) / 8),
+        (56 + (idx % 8) - idx / 8,
         Math.min(idx % 8,(56 + (idx % 8)- idx) / 8),
         idx % 8,
-        Math.min(idx % 8,(idx - (idx%8))/8),
+        Math.min(idx % 8, (idx - (idx%8))/8),
         (idx -(idx % 8))/8,
         Math.min(7 - (idx % 8), (idx - idx%8))/8), 
         ];
@@ -44,7 +44,7 @@ const getReversibleStones = (idx) => {
             const box = [];
             //現在調べている方向にいくつマスがあるか
             const squareNum = squareNums[i];
-            const param = [i];
+            const param = parameters[i];
             //ひとつ隣の石の状態
             const nextStoneState = stoneStateList[idx + param];
 
@@ -54,7 +54,7 @@ const getReversibleStones = (idx) => {
             box.push(idx + param);
 
             //フロー図[4][5]のループを実装
-            for (var j = 0; j < squareNum -1; j++){
+            for (var j = 0; j < squareNum - 1; j++){
                 const targetIdx = idx + param * 2 + param * j;
                 const targetColor = stoneStateList[targetIdx];
                 //フロー図の[4]:さらに隣に隣に石があるか -> なければ次のループへ
@@ -98,7 +98,7 @@ const getReversibleStones = (idx) => {
 
                   //もし盤面がいっぱいだったら、ゲームが終了
                   if (stoneStateList.every((state) => state !== 0)) {
-                    const blackStonesNum = stoneStateList.filter(state => state === 1).length;{
+                    const blackStonesNum = stoneStateList.filter(state => state === 1).length;
                     const whiteStonesNum = 64 - whiteStonesNum;
 
                     var winnerText = "";
@@ -152,4 +152,3 @@ window.onload = () => {
     createSquares();
     passButton.addEventListener("click", changeTurn)
     }
-};
