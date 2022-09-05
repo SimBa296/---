@@ -57,6 +57,12 @@ html, body {
 #square-template {
     display:none;
 }
-#current-turn {
-    font-size:25px
+.stone[data-state="1"]{
+    background-color: black;
+}
+.stone[date-state="2"]{
+    background-color:white;
+}
+#square-template {
+    display:none;
 }
