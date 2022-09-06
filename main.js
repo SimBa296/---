@@ -111,7 +111,13 @@ const getReversibleStones = (idx) => {
                     else if (blackStonesNum < whiteStonesNum){
                         winnerText = "白の勝利！";
                     }
-                        else {
+                    else if (!(blackStonesNum > whiteStonesNum)) {
+                        winnerText = "黒の完全勝利";
+                    }
+                    else if (!(blackStonesNum < whiteStonesNum)) {
+                        winnerText = "白の完全勝利";
+                    }
+                     else {
                             winnerText ="引き分け";
                         }
                         alert(`ゲーム終了。白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
@@ -126,15 +132,15 @@ const getReversibleStones = (idx) => {
                     const square = squareTemplate.cloneNode(true);//クローン
                     square.removeAttribute("id"); // idの属性
                     stage.appendChild(square);// マス目 html要素を盤に追加
-            
+                    
                     const stone = square.querySelector('.stone');
             
                     let defaultState;
                     //デフォルトの石の状態を分岐
-                    if(i == 27 || i == 36) {
+                    if(i == 28 || i == 35) {
                         defaultState = 1;
                     }
-                    else if(i == 28 || i == 35){
+                    else if(i ==  27 || i ==  36){
                         defaultState = 2;
                     }
                     else {
