@@ -102,7 +102,7 @@ const getReversibleStones = (idx) => {
                   if (stoneStateList.every((state) => state !== 0)) {
                     const blackStonesNum = stoneStateList.filter(state => state === 1).length;
                     
-                    const whiteStonesNum = 64 - whiteStonesNum;
+                    const whiteStonesNum = 64 - blackStonesNum;
                      
                     let winnerText = "";
                     if (blackStonesNum > whiteStonesNum) {
@@ -114,7 +114,7 @@ const getReversibleStones = (idx) => {
                         else {
                             winnerText ="引き分け";
                         }
-                        alert('ゲーム終了。白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}')
+                        alert(`ゲーム終了。白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
                     }
                     //ゲーム続行で相手ターン
                     changeTurn();
