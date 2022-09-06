@@ -153,3 +153,16 @@ window.onload = () => {
     createSquares();
     passButton.addEventListener("click", changeTurn)
     }
+//日付を追加してみた
+    // let date = new Date();
+    // let str =date.getFullYear()
+    // +'/' + ('0' + (date.getMonth() + 1 )).slice(-2)
+    // +'/' + ('0' + date.getDate()).slice(-2)
+    // +' ' + ('0' + date.getHours() ).slice(-2)
+    // +':' + ('0' + date.getMinutes() ).slice(-2)
+    // +':' + ('0' + date.getSeconds() ).slice(-2)
+    // +'(JST)';
+    // console.log(str);
+   
+    let realTime = new Date();
+    let text = hour + ':' + minute + ':' + second;

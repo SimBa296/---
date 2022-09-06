@@ -67,15 +67,22 @@ html, body {
     display:none;
 }
 #current-turn {
-    font-size: 20px;
+    font-size: 30px;
 }
 #pass {
-    font-size:150%;
+    font-size:20px;
     /* text-align: center; */
     padding: 5px 10px;
     /* float: left; */
     border-color: blue;
     position: relative;
     left:230px;
-    
+}
+.text{
+    position: relative;
+    left:170px;
+    font-size: 20px;
+}
+#real-time {
+    font-size: 20px;
 }
