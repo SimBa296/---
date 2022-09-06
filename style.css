@@ -70,15 +70,21 @@ html, body {
 #current-turn {
     font-size: 30px;
 }
+
+
+
 #pass {
     font-size:20px;
-    /* text-align: center; */
     padding: 5px 10px;
-    /* float: left; */
     border-color: blue;
     position: relative;
     left:230px;
+    box-shadow: 0 0 40px 40px white inset, 0 0 0 0 white;
+    transition: all 150ms ease-in-out;
+   
 }
+
+
 .text{
     position: relative;
     left:170px;
