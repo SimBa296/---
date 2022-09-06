@@ -2,7 +2,7 @@
 const stage = document.getElementById("stage");
 const squareTemplate = document.getElementById("square-template");
 const stoneStateList = [];
-var currentColor = 1;
+let currentColor = 1;
 const currentTurnText = document.getElementById("current-turn");
 const passButton = document.getElementById("pass");
 
@@ -18,7 +18,7 @@ const changeTurn = () => {
 
 
 const getReversibleStones = (idx) => {
-    //縦・横・斜めの計算
+    //縦・横・斜めの計算 苦手な部分で他のコードで理解
     const squareNums = [
         7 - (idx % 8),
         Math.min (7 - (idx % 8), (56 + (idx % 8) - idx) / 8),
@@ -37,7 +37,7 @@ const getReversibleStones = (idx) => {
 
         // for文ループの規則を定めるためのパラメータ定義
         //ひっくり貸せることが確定した石の情報を入れる配列
-        var results = [];
+        let results = [];
 
         //8方向への走査のためのfor文
         for (let i = 0; i < 8; i++) {
@@ -101,9 +101,10 @@ const getReversibleStones = (idx) => {
                   //もし盤面がいっぱいだったら、ゲームが終了
                   if (stoneStateList.every((state) => state !== 0)) {
                     const blackStonesNum = stoneStateList.filter(state => state === 1).length;
+                    
                     const whiteStonesNum = 64 - whiteStonesNum;
-
-                    var winnerText = "";
+                     
+                    let winnerText = "";
                     if (blackStonesNum > whiteStonesNum) {
                         winnerText = "黒の勝利！";
                     }
@@ -119,7 +120,7 @@ const getReversibleStones = (idx) => {
                     changeTurn();
             }
 
-
+            //letが範囲を限定にされるので他のコードを邪魔されないようになった
             const createSquares = () => {
                 for (let i = 0; i < 64; i++) {
                     const square = squareTemplate.cloneNode(true);//クローン
