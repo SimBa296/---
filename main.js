@@ -83,7 +83,17 @@ const getReversibleStones = (idx) => {
                  //他の石があるか、置いたときにひっくり返せる石がない場合は置けないメッセージを出す
                  if (stoneStateList[index] !== 0 || !reversibleStones.length){
                     alert("ここには置けないよ！");
+                    
                     return;
+                 }
+                 //完全勝利の場合 
+                 console.log(stoneStateList);
+
+                 if (stoneStateList[index] == 0 || reversibleStones.length == 1){
+                    const index = stoneStateList.map(state => state === 1).length;
+                    alert("完全勝利");
+
+                    // return;
                  }
 
                  //自分の石
@@ -103,6 +113,7 @@ const getReversibleStones = (idx) => {
                     const blackStonesNum = stoneStateList.filter(state => state === 1).length;
                     
                     const whiteStonesNum = 64 - blackStonesNum;
+                    // const whiteStonesNum = 0 - blackStonesNum;
                      
                     let winnerText = "";
                     if (blackStonesNum > whiteStonesNum) {
@@ -111,17 +122,14 @@ const getReversibleStones = (idx) => {
                     else if (blackStonesNum < whiteStonesNum){
                         winnerText = "白の勝利！";
                     }
-                    else if (!(blackStonesNum > whiteStonesNum)) {
-                        winnerText = "黒の完全勝利";
-                    }
-                    else if (!(blackStonesNum < whiteStonesNum)) {
-                        winnerText = "白の完全勝利";
-                    }
+                    
                      else {
                             winnerText ="引き分け";
                         }
+                        
                         alert(`ゲーム終了。白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
                     }
+                                           
                     //ゲーム続行で相手ターン
                     changeTurn();
             }
