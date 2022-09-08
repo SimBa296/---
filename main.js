@@ -79,25 +79,15 @@ const getReversibleStones = (idx) => {
                 
                 //ひっくり返せる石の数
                  const reversibleStones = getReversibleStones(index);
-
+                 
                  //他の石があるか、置いたときにひっくり返せる石がない場合は置けないメッセージを出す
+                 
                  if (stoneStateList[index] !== 0 || !reversibleStones.length){
                     alert("ここには置けないよ！");
                     
                     return;
                  }
-                 //完全勝利の場合 
-                //if(白が０ または 黒が0)
-                //  console.log(stoneStateList);
-                //stoneStateList の配列
-                //stoneStateListに黒か白が何個あるか知りたい
-                //filterが配列の中身を確認している
-                 if (stoneStateList.filter(state => state === 1).length && stoneStateList.filter(state => state === 2).length) {
-                    
-                    alert("完全勝利");
-                    return;
-
-                 }
+                  
                  
                  //自分の石
                  stoneStateList[index] = currentColor;
@@ -105,11 +95,36 @@ const getReversibleStones = (idx) => {
                  .querySelector(`[data-index='${index}']`)
                  .setAttribute("data-state",currentColor);
 
+                  //完全勝利の場合 
+                //if(白が０ または 黒が0)
+                
+                //stoneStateList の配列
+                //stoneStateListに黒か白が何個あるか知りたい
+                //filterが配列の中身を確認している
+                //完全勝利のパターンはできたがお知らせがでない状態
+                  
+                //自動パス 黒か白がどちらか返す事ができない場合 スキップする
+                 //つまりどちらかが0ならスキップ
+                 
+                    if (!stoneStateList.filter(state => state === 1).length || !stoneStateList.filter(state => state === 2).length) {
+
+                        alert("完全勝利");
+                    }
+                        else if (!stoneStateList.filter(state => state === 1).length || stoneStateList.filter(state => state === 2) {
+                    }
+                    continue;  
+                        
+                    
+                    
+
                  //相手の石をひっくり返す
                  reversibleStones.forEach((key) => {
                     stoneStateList[key] = currentColor;
                     document.querySelector(`[data-index='${key}']`).setAttribute("data-state",currentColor);
-                  });
+
+                      
+                  });              
+                
 
                   //もし盤面がいっぱいだったら、ゲームが終了
                   if (stoneStateList.every((state) => state !== 0)) {
@@ -171,16 +186,6 @@ window.onload = () => {
     createSquares();
     passButton.addEventListener("click", changeTurn)
     }
-//日付を追加してみた
-    // let date = new Date();
-    // let str =date.getFullYear()
-    // +'/' + ('0' + (date.getMonth() + 1 )).slice(-2)
-    // +'/' + ('0' + date.getDate()).slice(-2)
-    // +' ' + ('0' + date.getHours() ).slice(-2)
-    // +':' + ('0' + date.getMinutes() ).slice(-2)
-    // +':' + ('0' + date.getSeconds() ).slice(-2)
-    // +'(JST)';
-    // console.log(str);
-   
+
     let realTime = new Date();
     let text = hour + ':' + minute + ':' + second;
