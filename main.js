@@ -189,3 +189,6 @@ window.onload = () => {
 
     let realTime = new Date();
     let text = hour + ':' + minute + ':' + second;
+
+    //課題 完全勝利 スキップ機能 お知らせ
+    // 打ち直し 予測 結果の記録
