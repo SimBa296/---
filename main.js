@@ -95,7 +95,12 @@ const getReversibleStones = (idx) => {
                  .querySelector(`[data-index='${index}']`)
                  .setAttribute("data-state",currentColor);
 
-                  //完全勝利の場合 
+                  
+                    
+                       
+                        
+                    
+                    //完全勝利の場合 
                 //if(白が０ または 黒が0)
                 
                 //stoneStateList の配列
@@ -106,23 +111,19 @@ const getReversibleStones = (idx) => {
                 //自動パス 黒か白がどちらか返す事ができない場合 スキップする
                  //つまりどちらかが0ならスキップ
                  
-                    if (!stoneStateList.filter(state => state === 1).length || !stoneStateList.filter(state => state === 2).length) {
-
-                        alert("完全勝利");
-                    }
-                        else if (!stoneStateList.filter(state => state === 1).length || stoneStateList.filter(state => state === 2) {
-                    }
-                    continue;  
-                        
-                    
-                    
 
                  //相手の石をひっくり返す
                  reversibleStones.forEach((key) => {
                     stoneStateList[key] = currentColor;
                     document.querySelector(`[data-index='${key}']`).setAttribute("data-state",currentColor);
 
-                      
+                    if (!stoneStateList.filter(state => state === 1).length || !stoneStateList.filter(state => state === 2).length) {
+
+                        alert("完全勝利");
+                        // else  (!stoneStateList.filter(state => state === 1).length || stoneStateList.filter(state => state === 2) {
+                        // }
+                        // continue; 
+                    }
                   });              
                 
 
