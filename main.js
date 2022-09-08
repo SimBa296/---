@@ -18,7 +18,7 @@ const changeTurn = () => {
 
 
 const getReversibleStones = (idx) => {
-    //縦・横・斜めの計算 苦手な部分で他のコードで理解
+    //縦・横・斜めの計算 苦手な部分
     const squareNums = [
         7 - (idx % 8),
         Math.min (7 - (idx % 8), (56 + (idx % 8) - idx) / 8),
@@ -95,7 +95,10 @@ const getReversibleStones = (idx) => {
                  .querySelector(`[data-index='${index}']`)
                  .setAttribute("data-state",currentColor);
 
-                  
+                  if (stoneStateList.filter(state => state === 1).length != stoneStateList.filter(state => state === 2) {
+                    continue;
+                 }
+                         
                     
                        
                         
@@ -120,9 +123,7 @@ const getReversibleStones = (idx) => {
                     if (!stoneStateList.filter(state => state === 1).length || !stoneStateList.filter(state => state === 2).length) {
 
                         alert("完全勝利");
-                        // else  (!stoneStateList.filter(state => state === 1).length || stoneStateList.filter(state => state === 2) {
-                        // }
-                        // continue; 
+                        
                     }
                   });              
                 
