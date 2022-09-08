@@ -87,15 +87,18 @@ const getReversibleStones = (idx) => {
                     return;
                  }
                  //完全勝利の場合 
-                 console.log(stoneStateList);
-
-                 if (stoneStateList[index] == 0 || reversibleStones.length == 1){
-                    const index = stoneStateList.map(state => state === 1).length;
+                //if(白が０ または 黒が0)
+                //  console.log(stoneStateList);
+                //stoneStateList の配列
+                //stoneStateListに黒か白が何個あるか知りたい
+                //filterが配列の中身を確認している
+                 if (stoneStateList.filter(state => state === 1).length && stoneStateList.filter(state => state === 2).length) {
+                    
                     alert("完全勝利");
+                    return;
 
-                    // return;
                  }
-
+                 
                  //自分の石
                  stoneStateList[index] = currentColor;
                  document
@@ -113,7 +116,7 @@ const getReversibleStones = (idx) => {
                     const blackStonesNum = stoneStateList.filter(state => state === 1).length;
                     
                     const whiteStonesNum = 64 - blackStonesNum;
-                    // const whiteStonesNum = 0 - blackStonesNum;
+                    
                      
                     let winnerText = "";
                     if (blackStonesNum > whiteStonesNum) {
