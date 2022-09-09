@@ -79,11 +79,15 @@ const getReversibleStones = (idx) => {
                 
                 //ひっくり返せる石の数
                  const reversibleStones = getReversibleStones(index);
+
+                
                  
                  //他の石があるか、置いたときにひっくり返せる石がない場合は置けないメッセージを出す
                  
                  if (stoneStateList[index] !== 0 || !reversibleStones.length){
-                    alert("ここには置けないよ！");
+                    
+                    //メッセージ改善
+                    // alert("ここには置けないよ！");
                     
                     return;
                  }
@@ -95,13 +99,13 @@ const getReversibleStones = (idx) => {
                  .querySelector(`[data-index='${index}']`)
                  .setAttribute("data-state",currentColor);
 
-                  if (stoneStateList.filter(state => state === 1).length != stoneStateList.filter(state => state === 2) {
-                    continue;
-                 }
-                         
-                    
-                       
-                        
+                 //自動パス 黒か白がどちらか返す事ができない場合 スキップする
+                 //つまりどちらかが0ならスキップ
+                 if (stoneStateList[index] == 0 || !reversibleStones.length){
+                //    if (!stoneStateList.filter(state => state === 1 && !stoneStateList.filter(state => state === 2).length) {
+                            
+                    return;
+                    }
                     
                     //完全勝利の場合 
                 //if(白が０ または 黒が0)
@@ -110,10 +114,6 @@ const getReversibleStones = (idx) => {
                 //stoneStateListに黒か白が何個あるか知りたい
                 //filterが配列の中身を確認している
                 //完全勝利のパターンはできたがお知らせがでない状態
-                  
-                //自動パス 黒か白がどちらか返す事ができない場合 スキップする
-                 //つまりどちらかが0ならスキップ
-                 
 
                  //相手の石をひっくり返す
                  reversibleStones.forEach((key) => {
@@ -122,8 +122,7 @@ const getReversibleStones = (idx) => {
 
                     if (!stoneStateList.filter(state => state === 1).length || !stoneStateList.filter(state => state === 2).length) {
 
-                        alert("完全勝利");
-                        
+                        alert("Perfect Game");
                     }
                   });              
                 
@@ -147,7 +146,7 @@ const getReversibleStones = (idx) => {
                             winnerText ="引き分け";
                         }
                         
-                        alert(`ゲーム終了。白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
+                        alert(`Result report、白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
                     }
                                            
                     //ゲーム続行で相手ターン
@@ -187,6 +186,7 @@ const getReversibleStones = (idx) => {
 window.onload = () => {
     createSquares();
     passButton.addEventListener("click", changeTurn)
+
     }
 
     let realTime = new Date();
