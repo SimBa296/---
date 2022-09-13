@@ -89,8 +89,18 @@ const getReversibleStones = (idx) => {
                     //メッセージ改善
                     // alert("ここには置けないよ！");
                     
-                    return;
+                    // return;
                  }
+                 const showMessage = message => {
+                    const area = document.querySelector('#message-area');
+                    if (!message) {
+                      area.classList.remove('visible');
+                      return;
+                    }
+                    area.classList.add('visible');
+                    area.textContent = message;
+                  };
+                  document.addEventListener('click', () => showMessage(''), {capture:true});
                   
                  
                  //自分の石
@@ -100,7 +110,7 @@ const getReversibleStones = (idx) => {
                  .setAttribute("data-state",currentColor);
 
                  //自動パス 黒か白がどちらか返す事ができない場合 スキップする
-                 //つまりどちらかが0ならスキップ
+                 //つまり黒か白が置けない場合にスキップする機能
                  if (stoneStateList[index] == 0 || !reversibleStones.length){
                 //    if (!stoneStateList.filter(state => state === 1 && !stoneStateList.filter(state => state === 2).length) {
                             
@@ -145,6 +155,7 @@ const getReversibleStones = (idx) => {
                      else {
                             winnerText ="引き分け";
                         }
+                        
                         
                         alert(`Result report、白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
                     }
