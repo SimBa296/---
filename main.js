@@ -89,19 +89,8 @@ const getReversibleStones = (idx) => {
                     //メッセージ改善
                     // alert("ここには置けないよ！");
                     
-                    // return;
+                    return;
                  }
-                 const showMessage = message => {
-                    const area = document.querySelector('#message-area');
-                    if (!message) {
-                      area.classList.remove('visible');
-                      return;
-                    }
-                    area.classList.add('visible');
-                    area.textContent = message;
-                  };
-                  document.addEventListener('click', () => showMessage(''), {capture:true});
-                  
                  
                  //自分の石
                  stoneStateList[index] = currentColor;
@@ -113,8 +102,17 @@ const getReversibleStones = (idx) => {
                  //つまり黒か白が置けない場合にスキップする機能
                  if (stoneStateList[index] == 0 || !reversibleStones.length){
                 //    if (!stoneStateList.filter(state => state === 1 && !stoneStateList.filter(state => state === 2).length) {
-                            
-                    return;
+                    const showMessage = message => {
+                        const area = document.querySelector('#message-area');
+                        if (!message) {
+                          area.classList.remove('visible');
+                          return;
+                        }
+                        area.classList.add('visible');
+                        area.textContent = message;
+                      };
+                    document.addEventListener('click', () => showMessage(''), {capture:true}); 
+                    
                     }
                     
                     //完全勝利の場合 
