@@ -87,8 +87,7 @@ const getReversibleStones = (idx) => {
                  if (stoneStateList[index] !== 0 || !reversibleStones.length){
                     
                     //メッセージ改善
-                    // alert("ここには置けないよ！");
-                    
+                                      
                     return;
                  }
                  
