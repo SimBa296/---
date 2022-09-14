@@ -93,3 +93,9 @@ html, body {
 #real-time {
     font-size: 20px;
 }
+
+.text2 {
+    font-size: 20px;
+    position: relative;
+    left:170px;
+}
