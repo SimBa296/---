@@ -5,6 +5,7 @@ const stoneStateList = [];
 let currentColor = 1;
 const currentTurnText = document.getElementById("current-turn");
 const passButton = document.getElementById("pass");
+const fixText = document.getElementById("fix")
 
 const changeTurn = () => {
     currentColor = 3 - currentColor;
@@ -83,7 +84,7 @@ const getReversibleStones = (idx) => {
                 
                  
                  //他の石があるか、置いたときにひっくり返せる石がない場合は置けないメッセージを出す
-                 
+                 //改善 石が置けないときにテキストで「ここに置けません」と表示する
                  if (stoneStateList[index] !== 0 || !reversibleStones.length){
                     
                     //メッセージ改善
@@ -100,7 +101,7 @@ const getReversibleStones = (idx) => {
                  //自動パス 黒か白がどちらか返す事ができない場合 スキップする
                  //つまり黒か白が置けない場合にスキップする機能
                  if (stoneStateList[index] == 0 || !reversibleStones.length){
-                //    if (!stoneStateList.filter(state => state === 1 && !stoneStateList.filter(state => state === 2).length) {
+                
                     const showMessage = message => {
                         const area = document.querySelector('#message-area');
                         if (!message) {
