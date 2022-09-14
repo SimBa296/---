@@ -5,8 +5,14 @@ const stoneStateList = [];
 let currentColor = 1;
 const currentTurnText = document.getElementById("current-turn");
 const passButton = document.getElementById("pass");
+//クリックして石を戻したい
+const backButton = document.getElementById("back");
 //クリックして石が置けない場合に「テキストが表示される」
 const fixText = document.getElementById("fix")
+
+const back = () => {
+   
+}
 
 const changeTurn = () => {
     currentColor = 3 - currentColor;
@@ -83,7 +89,6 @@ const getReversibleStones = (idx) => {
                  const reversibleStones = getReversibleStones(index);
 
                 
-                 
                  //他の石があるか、置いたときにひっくり返せる石がない場合は置けないメッセージを出す
                 //メッセージ改善 石が置けないときにテキストで「ここに置けません」と表示する
                  if (stoneStateList[index] !== 0 || !reversibleStones.length){
@@ -196,7 +201,8 @@ const getReversibleStones = (idx) => {
 window.onload = () => {
     createSquares();
     passButton.addEventListener("click", changeTurn)
-
+    
+    backutton.addEventListener("click", back)
     }
 
     let realTime = new Date();

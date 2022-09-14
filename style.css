@@ -78,12 +78,22 @@ html, body {
     padding: 5px 10px;
     border-color: blue;
     position: relative;
-    left:230px;
+    left: 150px;
     box-shadow: 0 0 40px 40px white inset, 0 0 0 0 white;
     transition: all 150ms ease-in-out;
    
 }
 
+#back {
+    font-size:20px;
+    padding: 5px 10px;
+    border-color: blue;
+    position: relative;
+    left:250px;
+    box-shadow: 0 0 40px 40px white inset, 0 0 0 0 white;
+    transition: all 150ms ease-in-out;
+   
+}
 
 .text{
     position: relative;
