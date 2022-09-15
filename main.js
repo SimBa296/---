@@ -202,7 +202,7 @@ window.onload = () => {
     createSquares();
     passButton.addEventListener("click", changeTurn)
     
-    backutton.addEventListener("click", back)
+    backButton.addEventListener("click", back)
     }
 
     let realTime = new Date();
