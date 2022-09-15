@@ -17,6 +17,7 @@ const back = () => {
 const changeTurn = () => {
     currentColor = 3 - currentColor;
 
+    //スキップ機能を追加した
     let isSkip = true;
 
     const emptyIndexList = stoneStateList.flatMap((state,i) => (state === 0 ? i : []));
@@ -120,36 +121,29 @@ const getReversibleStones = (idx) => {
                  .querySelector(`[data-index='${index}']`)
                  .setAttribute("data-state",currentColor);
 
-                 //自動パス 黒か白がどちらか返す事ができない場合 スキップする
+                 
                  //つまり黒か白が置けない場合にスキップする機能
-                 if (stoneStateList[index] == 0 || !reversibleStones.length){
+                //  if (stoneStateList[index] == 0 || !reversibleStones.length){
                 
-                    const showMessage = message => {
-                        const area = document.querySelector('#message-area');
-                        if (!message) {
-                          area.classList.remove('visible');
-                          return;
-                        }
-                        area.classList.add('visible');
-                        area.textContent = message;
-                      };
-                    document.addEventListener('click', () => showMessage(''), {capture:true}); 
+                //     const showMessage = message => {
+                //         const area = document.querySelector('#message-area');
+                //         if (!message) {
+                //           area.classList.remove('visible');
+                //           return;
+                //         }
+                //         area.classList.add('visible');
+                //         area.textContent = message;
+                //       };
+                //     document.addEventListener('click', () => showMessage(''), {capture:true}); 
                     
-                    }
+                //     }
                     
-                    //完全勝利の場合 
-                //if(白が０ または 黒が0)
-                
-                //stoneStateList の配列
-                //stoneStateListに黒か白が何個あるか知りたい
-                //filterが配列の中身を確認している
-                //完全勝利のパターンはできたがお知らせがでない状態
 
                  //相手の石をひっくり返す
                  reversibleStones.forEach((key) => {
                     stoneStateList[key] = currentColor;
                     document.querySelector(`[data-index='${key}']`).setAttribute("data-state",currentColor);
-
+                    //完全勝利の場合
                     if (!stoneStateList.filter(state => state === 1).length || !stoneStateList.filter(state => state === 2).length) {
 
                         alert("Perfect Game");
