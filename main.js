@@ -17,6 +17,22 @@ const back = () => {
 const changeTurn = () => {
     currentColor = 3 - currentColor;
 
+    let isSkip = true;
+
+    const emptyIndexList = stoneStateList.flatMap((state,i) => (state === 0 ? i : []));
+    for (const index of emptyIndexList) {
+        //置ける場所がある場合
+        if(getReversibleStones(index) > 0){
+            isSkip = false;
+            break;
+        }
+    }
+    if(isSkip){
+        //ターンを戻す
+        currentColor = 3 -currentColor;
+        alert("Skip");
+    }
+
     if (currentColor === 1){
         currentTurnText.textContent = "黒";
     } else {
