@@ -9,7 +9,7 @@ const passButton = document.getElementById("pass");
 const backButton = document.getElementById("back");
 //クリックして石が置けない場合に「テキストが表示される」
 const fixText = document.getElementById("fix")
-// const SkipText = document.getElementById("Skip")
+const skipText = document.getElementById("skip")
 
 // const back = () => {
 
@@ -32,12 +32,14 @@ const changeTurn = () => {
     if (isSkip) {
         //ターンを戻す
         currentColor = 3 - currentColor;
-        alert("Skip");
-        //     document.getElementById("Skip").style.display = "block";
-        //     return;
-        //  }
-        //  document.getElementById("Skip").style.display="none";
+        document.getElementById("skip").style.display = "block";
+        // return;
     }
+    else {
+
+        document.getElementById("skip").style.display = "none";
+    }
+
 
     if (currentColor === 1) {
         currentTurnText.textContent = "黒";
