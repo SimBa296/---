@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>オセロゲーム</title>
     <link rel="icon" href="8214.jpg">
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
+
 <body>
-    
+
     <!-- 盤 -->
     <div id="stage" class="stage"></div>
     <!-- マス目のプレート -->
@@ -17,27 +19,32 @@
         <div class="stone"></div>
     </div>
     <!-- メッセージ改善-->
-    <p><div class="text2"><span id ="fix" style="display: none;">ここに置けないよ!</span></div></p>
+    <p>
+    <div class="text2"><span id="fix" style="display: none;">ここに置けないよ!</span></div>
+    </p>
     <!-- スキップ機能 -->
     <!-- <p><div class="text3"><span id ="skip" style="display: none;">Skipします</span></div></p> -->
-    <p><div class="text">現在の手番は<span id="current-turn">黒</span>です</div></p>
-    <button id= "pass">Pass</button>
+    <p>
+    <div class="text">現在の手番は<span id="current-turn">黒</span>です</div>
+    </p>
+    <button id="pass">Pass</button>
 
-    <button id= "back">Back</button>
+    <button id="back">Back</button>
     <script src="main.js"></script>
     <div id="message-area"></div>
 
-    <p>時刻は<span id = "real-time"></span>です</p>
+    <p>時刻は<span id="real-time"></span>です</p>
     <script type="text/javascript">
         function Time() {
             let realTime = new Date();
             let hour = realTime.getHours();
             let minutes = realTime.getMinutes();
             let seconds = realTime.getSeconds();
-            let text = hour + ":" + minutes +":" + seconds;
+            let text = hour + ":" + minutes + ":" + seconds;
             document.getElementById("real-time").innerHTML = text;
         }
-        setInterval('Time()',1000);
+        setInterval('Time()', 1000);
     </script>
 </body>
+
 </html>
