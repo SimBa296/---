@@ -9,6 +9,8 @@ const backButton = document.getElementById("back");
 //クリックして石が置けない場合に「ここは置けない」
 const fixText = document.getElementById("fix")
 const skipText = document.getElementById("skip")
+//どこにおけるか予測する
+let candidateList;
 
 // const back = () => {
 
@@ -32,7 +34,7 @@ const changeTurn = () => {
         //ターンを戻す
         currentColor = 3 - currentColor;
         document.getElementById("skip").style.display = "block";
-        // return;
+
     }
     else {
 
@@ -210,6 +212,19 @@ const createSquares = () => {
         stoneStateList.push(defaultState);//初期値を配列に格納
 
         square.addEventListener('click', () => {
+
+            // console.log();
+            // candidateList = [];
+            // for (let y = 0; y < stage; y++) {
+            //     for (let x = 0; x < stage; x++) {
+            //         const { canndinate, } = getReversibleStones(x, y, getCurrentTurn());
+            //         gameBoard[x][y].element.classList.remove('hint');
+            //         if (canndinate.reversibles.length !== 0) {
+            //             candidateList.push(canndinate); // 候補手に追加する
+            //             gameBoard[x][y].element.classList.add('hint'); // 候補手を光らせてみる、なんなら候補手にクリックとつけてもいい
+            //         }
+            //     }
+            // }
             onClickSquare(i);
         });
     }
@@ -219,8 +234,8 @@ window.onload = () => {
     backButton.addEventListener("click", back)
 }
 
-let realTime = new Date();
-let text = hour + ':' + minute + ':' + second;
+// let realTime = new Date();
+// let text = hour + ':' + minute + ':' + second;
 
 
-    // 打ち直し 予測 結果の記録 パスを自動化 完全勝するとスキップメッセージが反応する
+    // 打ち直し 予測 結果の記録 パスを自動化 完全勝利するとスキップメッセージが反応する
