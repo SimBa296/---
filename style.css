@@ -4,8 +4,7 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html body {
     margin: 0;
     background-color: white;
 }
@@ -63,6 +62,7 @@ body {
     background-color: black;
 }
 
+/* 白27 */
 .stone[data-state="2"] {
     background-color: white;
 }
@@ -74,7 +74,7 @@ body {
 .stone[data-state="1"] {
     background-color: black;
 }
-
+/* 白36 */
 .stone[date-state="2"] {
     background-color: white;
 }
@@ -87,18 +87,6 @@ body {
     font-size: 30px;
 }
 
-
-
-#pass {
-    font-size: 20px;
-    padding: 5px 10px;
-    border-color: blue;
-    position: relative;
-    left: 150px;
-    box-shadow: 0 0 40px 40px white inset, 0 0 0 0 white;
-    transition: all 150ms ease-in-out;
-
-}
 
 #back {
     font-size: 20px;
@@ -126,8 +114,15 @@ body {
     position: relative;
     left: 170px;
 }
+
 .text3 {
     font-size: 20px;
     position: relative;
     left: 240px;
+}
+
+.hint>.stone {
+    background-color: red;
+    width: 8px;
+    height: 8px;
 }

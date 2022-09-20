@@ -4,10 +4,9 @@ const squareTemplate = document.getElementById("square-template");
 const stoneStateList = [];
 let currentColor = 1;
 const currentTurnText = document.getElementById("current-turn");
-const passButton = document.getElementById("pass");
 //クリックして石を戻したい
 const backButton = document.getElementById("back");
-//クリックして石が置けない場合に「テキストが表示される」
+//クリックして石が置けない場合に「ここは置けない」
 const fixText = document.getElementById("fix")
 const skipText = document.getElementById("skip")
 
@@ -217,13 +216,11 @@ const createSquares = () => {
 }
 window.onload = () => {
     createSquares();
-    passButton.addEventListener("click", changeTurn)
-
     backButton.addEventListener("click", back)
 }
 
 let realTime = new Date();
 let text = hour + ':' + minute + ':' + second;
 
-    //課題 完全勝利 スキップ機能 お知らせ
-    // 打ち直し 予測 結果の記録
+
+    // 打ち直し 予測 結果の記録 パスを自動化 完全勝するとスキップメッセージが反応する
