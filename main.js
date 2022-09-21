@@ -1,3 +1,12 @@
+function dispHint() {
+    for (let i = 0; i <= 63; i++) {
+        let elem = document.querySelector(`[data-index='${i}']`);
+        elem.classList.remove('hint');
+        if (getReversibleStones(i) > 0) {
+            elem.classList.add('hint');
+        }
+    }
+}
 // テンプレート
 const stage = document.getElementById("stage");
 const squareTemplate = document.getElementById("square-template");
@@ -11,6 +20,7 @@ const fixText = document.getElementById("fix")
 const skipText = document.getElementById("skip")
 //どこにおけるか予測する
 let candidateList;
+
 
 // const back = () => {
 
@@ -228,6 +238,7 @@ const createSquares = () => {
             onClickSquare(i);
         });
     }
+    dispHint();
 }
 window.onload = () => {
     createSquares();

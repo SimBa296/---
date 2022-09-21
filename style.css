@@ -74,6 +74,7 @@ html body {
 .stone[data-state="1"] {
     background-color: black;
 }
+
 /* 白36 */
 .stone[date-state="2"] {
     background-color: white;
@@ -121,8 +122,7 @@ html body {
     left: 240px;
 }
 
-.hint>.stone {
+.hint::after {
+    content: "◎";
     background-color: red;
-    width: 8px;
-    height: 8px;
 }
