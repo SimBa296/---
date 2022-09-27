@@ -5,14 +5,15 @@ const stoneStateList = [];
 let currentColor = 1;
 const currentTurnText = document.getElementById("current-turn");
 //クリックして石を戻したい
-// const backButton = document.getElementById("back");
+const backButton = document.getElementById("back");
 //クリックして石が置けない場合に「ここは置けない」
 const fixText = document.getElementById("fix");
 const skipText = document.getElementById("skip");
 
 let score = 0;
 function updateScore (){
-    
+    if (blackStonesNum || whiteStonesNum)
+    score = 1;
 }
 
 //どこにおけるか予測する
@@ -200,6 +201,11 @@ const onClickSquare = (index) => {
 
 
     changeTurn();
+}
+
+function back() {
+ [player, stage] =JSON.parse(history.pop());
+ update();
 }
 
 //letが範囲を限定にされるので他のコードを邪魔されないようになった
