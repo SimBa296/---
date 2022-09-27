@@ -1,3 +1,25 @@
+// テンプレート
+const stage = document.getElementById("stage");
+const squareTemplate = document.getElementById("square-template");
+const stoneStateList = [];
+let currentColor = 1;
+const currentTurnText = document.getElementById("current-turn");
+//クリックして石を戻したい
+// const backButton = document.getElementById("back");
+//クリックして石が置けない場合に「ここは置けない」
+const fixText = document.getElementById("fix");
+const skipText = document.getElementById("skip");
+
+let score = 0;
+function updateScore (){
+    
+}
+
+//どこにおけるか予測する
+// let candidateList;
+
+
+//置けない場所はヒントを見せない。置けるところはヒントを見せる関数
 function dispHint() {
     for (let i = 0; i <= 63; i++) {
         let elem = document.querySelector(`[data-index='${i}']`);
@@ -7,20 +29,6 @@ function dispHint() {
         }
     }
 }
-// テンプレート
-const stage = document.getElementById("stage");
-const squareTemplate = document.getElementById("square-template");
-const stoneStateList = [];
-let currentColor = 1;
-const currentTurnText = document.getElementById("current-turn");
-//クリックして石を戻したい
-const backButton = document.getElementById("back");
-//クリックして石が置けない場合に「ここは置けない」
-const fixText = document.getElementById("fix")
-const skipText = document.getElementById("skip")
-//どこにおけるか予測する
-let candidateList;
-
 
 // const back = () => {
 
@@ -123,8 +131,6 @@ const onClickSquare = (index) => {
     //ひっくり返せる石の数
     const reversibleStones = getReversibleStones(index);
 
-
-    //他の石があるか、置いたときにひっくり返せる石がない場合は置けないメッセージを出す
     //メッセージ改善 石が置けないときにテキストで「ここに置けません」と表示する
     if (stoneStateList[index] !== 0 || !reversibleStones.length) {
 
@@ -192,7 +198,7 @@ const onClickSquare = (index) => {
         alert(`Result report、白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
     }
 
-    //ゲーム続行で相手ターン
+
     changeTurn();
 }
 
@@ -223,18 +229,6 @@ const createSquares = () => {
 
         square.addEventListener('click', () => {
 
-            // console.log();
-            // candidateList = [];
-            // for (let y = 0; y < stage; y++) {
-            //     for (let x = 0; x < stage; x++) {
-            //         const { canndinate, } = getReversibleStones(x, y, getCurrentTurn());
-            //         gameBoard[x][y].element.classList.remove('hint');
-            //         if (canndinate.reversibles.length !== 0) {
-            //             candidateList.push(canndinate); // 候補手に追加する
-            //             gameBoard[x][y].element.classList.add('hint'); // 候補手を光らせてみる、なんなら候補手にクリックとつけてもいい
-            //         }
-            //     }
-            // }
             onClickSquare(i);
         });
     }
@@ -242,7 +236,7 @@ const createSquares = () => {
 }
 window.onload = () => {
     createSquares();
-    backButton.addEventListener("click", back)
+    backButton.addEventListener("click", back);
 }
 
 // let realTime = new Date();

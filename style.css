@@ -123,6 +123,6 @@ html body {
 }
 
 .hint::after {
-    content: "◎";
-    background-color: red;
+    content: "★";
+    color: red;
 }
