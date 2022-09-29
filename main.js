@@ -2,7 +2,7 @@
 const stage = document.getElementById("stage");
 const squareTemplate = document.getElementById("square-template");
 const stoneStateList = [];
-let currentColor = 1;
+let currentColor = 1; //黒からのスタート
 const currentTurnText = document.getElementById("current-turn");
 //クリックして石を戻したい
 const backButton = document.getElementById("back");
@@ -10,11 +10,14 @@ const backButton = document.getElementById("back");
 const fixText = document.getElementById("fix");
 const skipText = document.getElementById("skip");
 
-let score = 0;
-function updateScore (){
-    if (blackStonesNum || whiteStonesNum)
-    score = 1;
-}
+const scoreText = document.getElementById("scoreBlack");
+
+const score2Text = document.getElementById("scoreWhite");
+// let score = 0;
+// function updateScore (){
+//     if (blackStonesNum || whiteStonesNum)
+//     score = 1;
+// }
 
 //どこにおけるか予測する
 // let candidateList;
@@ -43,7 +46,7 @@ const changeTurn = () => {
 
     const emptyIndexList = stoneStateList.flatMap((state, i) => (state === 0 ? i : []));
     for (const index of emptyIndexList) {
-        //置ける場所がある場合
+        //置ける場所がある場合の処理
         if (getReversibleStones(index) > 0) {
             isSkip = false;
             break;
@@ -84,7 +87,7 @@ const getReversibleStones = (idx) => {
 
         Math.min(7 - (idx % 8), (idx - (idx % 8)) / 8),
     ];
-    //for文ループの規則を定めるためのパラメータ定義
+    //for文ループの規則を定めるためのパラメータ定義、盤面の中心から左上から数字を決めている
     const parameters = [1, 9, 8, 7, -1, -9, -8, -7];
 
     // for文ループの規則を定めるためのパラメータ定義
@@ -186,6 +189,7 @@ const onClickSquare = (index) => {
         let winnerText = "";
         if (blackStonesNum > whiteStonesNum) {
             winnerText = "黒の勝利！";
+
         }
         else if (blackStonesNum < whiteStonesNum) {
             winnerText = "白の勝利！";
@@ -198,15 +202,21 @@ const onClickSquare = (index) => {
 
         alert(`Result report、白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
     }
+    
 
 
     changeTurn();
 }
+class MoveInfo {
+    constructor(){
 
-function back() {
- [player, stage] =JSON.parse(history.pop());
- update();
+    }
 }
+
+// function back() {
+//     [player, stage] = JSON.parse(history.pop());
+//     update();
+// }
 
 //letが範囲を限定にされるので他のコードを邪魔されないようになった
 const createSquares = () => {
@@ -234,7 +244,6 @@ const createSquares = () => {
         stoneStateList.push(defaultState);//初期値を配列に格納
 
         square.addEventListener('click', () => {
-
             onClickSquare(i);
         });
     }
