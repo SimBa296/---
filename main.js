@@ -25,7 +25,8 @@ const score2Text = document.getElementById("scoreWhite");
 
 //置けない場所はヒントを見せない。置けるところはヒントを見せる関数
 function dispHint() {
-    for (let i = 0; i <= 63; i++) {
+    console.log(classList);
+    for (let i = 0; i <= 64; i++) {
         let elem = document.querySelector(`[data-index='${i}']`);
         elem.classList.remove('hint');
         if (getReversibleStones(i) > 0) {
