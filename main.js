@@ -47,7 +47,7 @@ const changeTurn = () => {
     const emptyIndexList = stoneStateList.flatMap((state, i) => (state === 0 ? i : []));
     for (const index of emptyIndexList) {
         //置ける場所がある場合の処理
-        if (getReversibleStones(index) > 0) {
+        if (getReversibleStones(index).length > 0) {
             isSkip = false;
             break;
         }
@@ -130,6 +130,10 @@ const getReversibleStones = (idx) => {
     //ひっくり返せると確定した石の番号を戻り値にする
     return results;
 };
+
+/**
+ * ひっくり返す処理
+ */
 const onClickSquare = (index) => {
 
     //ひっくり返せる石の数
@@ -202,15 +206,25 @@ const onClickSquare = (index) => {
 
         alert(`Result report、白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
     }
-    
+
 
 
     changeTurn();
 }
+//スタートに関する情報を表現するクラス
 class MoveInfo {
-    constructor(){
-
+    constructor() {
+        this.turn = 0;//手番
+        this.pos = 0; //打った場所
+        this.flips = 0; //裏返した石の数
+        this.disc = new Array(20) //裏返した石の座標
     }
+    clear() {
+        this.turn = 0;
+        this.pos = 0;
+        this.flips = 0;
+    }
+    addFlipDisc(p) { this.disc[this.flips++] = p; }
 }
 
 // function back() {
