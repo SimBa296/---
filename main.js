@@ -1,3 +1,14 @@
+//置けない場所はヒントを見せない。置けるところはヒントを見せる関数
+function dispHint() {
+    for (let i = 0; i <= 63; i++) {
+        let elem = document.querySelector(`[data-index='${i}']`);
+        elem.classList.remove('hint');
+        if (getReversibleStones(i) > 0) {
+            elem.classList.add('hint');
+        }
+    }
+}
+
 // テンプレート
 const stage = document.getElementById("stage");
 const squareTemplate = document.getElementById("square-template");
@@ -22,18 +33,6 @@ const score2Text = document.getElementById("scoreWhite");
 //どこにおけるか予測する
 // let candidateList;
 
-
-//置けない場所はヒントを見せない。置けるところはヒントを見せる関数
-function dispHint() {
-    console.log(classList);
-    for (let i = 0; i <= 64; i++) {
-        let elem = document.querySelector(`[data-index='${i}']`);
-        elem.classList.remove('hint');
-        if (getReversibleStones(i) > 0) {
-            elem.classList.add('hint');
-        }
-    }
-}
 
 // const back = () => {
 
@@ -208,9 +207,8 @@ const onClickSquare = (index) => {
         alert(`Result report、白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
     }
 
-
-
     changeTurn();
+    dispHint();
 }
 //スタートに関する情報を表現するクラス
 class MoveInfo {
@@ -262,10 +260,11 @@ const createSquares = () => {
             onClickSquare(i);
         });
     }
-    dispHint();
+    
 }
 window.onload = () => {
     createSquares();
+    dispHint();
     backButton.addEventListener("click", back);
 }
 
