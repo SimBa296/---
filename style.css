@@ -25,7 +25,6 @@ html body {
     border: solid black;
     border-width: 0 4px 4px 0;
     cursor: pointer;
-    ;
 }
 
 .square:nth-child(-n + 8) {
@@ -43,61 +42,34 @@ html body {
     width: 54px;
     height: 54px;
 }
-
+/* 石を真ん中から表示させる */
 .stone {
     position: absolute;
     top: 2px;
     bottom: 0;
     left: 2px;
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
     border-radius: 21px;
+    
 }
 
-.stone[data-state="0"] {
-    display: none;
-}
 
 .stone[data-state="1"] {
     background-color: black;
 }
 
-/* 白27 */
+
 .stone[data-state="2"] {
     background-color: white;
 }
 
-#square-template {
+/* #square-template {
     display: none;
-}
-
-.stone[data-state="1"] {
-    background-color: black;
-}
-
-/* 白36 */
-.stone[date-state="2"] {
-    background-color: white;
-}
-
-#square-template {
-    display: none;
-}
+} */
 
 #current-turn {
     font-size: 30px;
-}
-
-
-#back {
-    font-size: 20px;
-    padding: 5px 10px;
-    border-color: blue;
-    position: relative;
-    left: 250px;
-    box-shadow: 0 0 40px 40px white inset, 0 0 0 0 white;
-    transition: all 150ms ease-in-out;
-
 }
 
 .text {
@@ -106,9 +78,6 @@ html body {
     font-size: 20px;
 }
 
-#real-time {
-    font-size: 20px;
-}
 
 .text2 {
     font-size: 20px;
@@ -123,6 +92,18 @@ html body {
 }
 
 .hint::after {
-    content: "★";
+    content: "●";
     color: red;
+    align-content: center;
 }
+
+/* #back {
+    font-size: 20px;
+    padding: 5px 10px;
+    border-color: blue;
+    position: relative;
+    left: 250px;
+    box-shadow: 0 0 40px 40px white inset, 0 0 0 0 white;
+    transition: all 150ms ease-in-out;
+
+} */

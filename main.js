@@ -1,9 +1,9 @@
 //置けない場所はヒントを見せない。置けるところはヒントを見せる関数
 function dispHint() {
-    for (let i = 0; i <= 63; i++) {
-        let elem = document.querySelector(`[data-index='${i}']`);
-        elem.classList.remove('hint');
-        if (getReversibleStones(i) > 0) {
+    for (let i = 0; i < 64; i++) {
+        let elem = document.querySelector(`[data-index='${i}']`);//要素の取得
+        elem.classList.remove('hint'); //ヒントを削除する
+        if (getReversibleStones(i) > 0) {//ひっくり返す石が０より多いときはヒントを表示
             elem.classList.add('hint');
         }
     }
@@ -31,7 +31,7 @@ const score2Text = document.getElementById("scoreWhite");
 // }
 
 //どこにおけるか予測する
-// let candidateList;
+let candidateList;
 
 
 // const back = () => {
@@ -131,9 +131,8 @@ const getReversibleStones = (idx) => {
     return results;
 };
 
-/**
- * ひっくり返す処理
- */
+// ひっくり返す処理
+
 const onClickSquare = (index) => {
 
     //ひっくり返せる石の数
@@ -210,22 +209,6 @@ const onClickSquare = (index) => {
     changeTurn();
     dispHint();
 }
-//スタートに関する情報を表現するクラス
-class MoveInfo {
-    constructor() {
-        this.turn = 0;//手番
-        this.pos = 0; //打った場所
-        this.flips = 0; //裏返した石の数
-        this.disc = new Array(20) //裏返した石の座標
-    }
-    clear() {
-        this.turn = 0;
-        this.pos = 0;
-        this.flips = 0;
-    }
-    addFlipDisc(p) { this.disc[this.flips++] = p; }
-}
-
 // function back() {
 //     [player, stage] = JSON.parse(history.pop());
 //     update();
@@ -260,16 +243,11 @@ const createSquares = () => {
             onClickSquare(i);
         });
     }
-    
+    dispHint();
 }
 window.onload = () => {
     createSquares();
-    dispHint();
-    backButton.addEventListener("click", back);
+    squareTemplate.remove();
+    // backButton.addEventListener("click", back);
 }
-
-// let realTime = new Date();
-// let text = hour + ':' + minute + ':' + second;
-
-
-    // 打ち直し 予測 結果の記録 パスを自動化 完全勝利するとスキップメッセージが反応する
+    // 打ち直し 予測 結果の記録 パスを自動化
