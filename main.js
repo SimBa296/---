@@ -21,9 +21,10 @@ const backButton = document.getElementById("back");
 const fixText = document.getElementById("fix");
 const skipText = document.getElementById("skip");
 
-const scoreText = document.getElementById("scoreBlack");
+// const scoreText = document.getElementById("scoreBlack");
 
-const score2Text = document.getElementById("scoreWhite");
+// const score2Text = document.getElementById("scoreWhite");
+
 // let score = 0;
 // function updateScore (){
 //     if (blackStonesNum || whiteStonesNum)
@@ -47,6 +48,7 @@ const changeTurn = () => {
     const emptyIndexList = stoneStateList.flatMap((state, i) => (state === 0 ? i : []));
     for (const index of emptyIndexList) {
         //置ける場所がある場合の処理
+        console.log(getReversibleStones(index));
         if (getReversibleStones(index).length > 0) {
             isSkip = false;
             break;
@@ -56,14 +58,10 @@ const changeTurn = () => {
         //ターンを戻す
         currentColor = 3 - currentColor;
         document.getElementById("skip").style.display = "block";
-
     }
     else {
-
         document.getElementById("skip").style.display = "none";
     }
-
-
     if (currentColor === 1) {
         currentTurnText.textContent = "黒";
     } else {
@@ -188,7 +186,6 @@ const onClickSquare = (index) => {
 
         const whiteStonesNum = 64 - blackStonesNum;
 
-
         let winnerText = "";
         if (blackStonesNum > whiteStonesNum) {
             winnerText = "黒の勝利！";
@@ -201,8 +198,6 @@ const onClickSquare = (index) => {
         else {
             winnerText = "引き分け";
         }
-
-
         alert(`Result report、白${whiteStonesNum}、黒${blackStonesNum}で、${winnerText}`)
     }
 
