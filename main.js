@@ -3,9 +3,12 @@ function dispHint() {
     for (let i = 0; i < 64; i++) {
         let elem = document.querySelector(`[data-index='${i}']`);//要素の取得
         elem.classList.remove('hint'); //ヒントを削除する
-        if (getReversibleStones(i) > 0) {//ひっくり返す石が０より多いときはヒントを表示
-            elem.classList.add('hint');
+        if (getReversibleStones(i).length > 0) {//ひっくり返す石が０より多いときはヒントを表示
+            if (getReversibleStones(i).length < 0) {
+                elem.classList.add('hint');
+            }
         }
+        console.log(getReversibleStones(i))
     }
 }
 
@@ -48,7 +51,6 @@ const changeTurn = () => {
     const emptyIndexList = stoneStateList.flatMap((state, i) => (state === 0 ? i : []));
     for (const index of emptyIndexList) {
         //置ける場所がある場合の処理
-        console.log(getReversibleStones(index));
         if (getReversibleStones(index).length > 0) {
             isSkip = false;
             break;
@@ -68,7 +70,6 @@ const changeTurn = () => {
         currentTurnText.textContent = "白";
     }
 }
-
 
 const getReversibleStones = (idx) => {
     //縦・横・斜めの計算 苦手な部分
@@ -166,7 +167,6 @@ const onClickSquare = (index) => {
     //     document.addEventListener('click', () => showMessage(''), {capture:true}); 
 
     //     }
-
 
     //相手の石をひっくり返す
     reversibleStones.forEach((key) => {
