@@ -3,12 +3,11 @@ function dispHint() {
     for (let i = 0; i < 64; i++) {
         let elem = document.querySelector(`[data-index='${i}']`);//要素の取得
         elem.classList.remove('hint'); //ヒントを削除する
-        if (getReversibleStones(i).length > 0) {//ひっくり返す石が０より多いときはヒントを表示
-            if (getReversibleStones(i).length < 0) {
-                elem.classList.add('hint');
-            }
+        if (getReversibleStones(i) > 0) {//ひっくり返す石が０より多いときはヒントを表示
+            elem.classList.add('hint'); //length 長さ
+
         }
-        console.log(getReversibleStones(i))
+        // console.log(getReversibleStones(i))
     }
 }
 
